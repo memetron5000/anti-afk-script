@@ -3,19 +3,31 @@ import keyboard
 import random
 import time
 import sys
+import _thread 
+import threading
 a=["a","s","d","w"]
 
-while True:
-    if(keyboard.read_key("'a")):
-        while True:
-            if (keyboard.is_pressed("+")):
-                sys.exit(0)
-            else:
+
+def breakout():
+    while True:
+        if (keyboard.is_pressed("+")):
+            sys.exit(randomizer) 
+def randomizer():
+    while True:
+        if(keyboard.read_key("-")):
+            while True:
                 b=random.choice(a)
                 inpu.keyDown(b)
-                time.sleep(0.01)
+                time.sleep(1)
                 inpu.keyUp(b)
-                time.sleep(5)
+
+
+p1 = threading.Thread(target=randomizer)
+p2 = threading.Thread(target=breakout)
+
+p1.start()
+p2.start()
+            
             
                 
             
